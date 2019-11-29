@@ -1,4 +1,5 @@
-// Given an array X of positive integers, its elements are to be transformed by running the following operation on them as many times as required:
+// Given an array X of positive integers, its elements are to be transformed by running the following operation on them 
+//as many times as required:
 
 // if X[i] > X[j] then X[i] = X[i] - X[j]
 
@@ -27,4 +28,41 @@
 
 // Additional notes:
 
-// There are performance tests consisted of very big numbers and arrays of size at least 30000. Please write an efficient algorithm to prevent timeout.
+// There are performance tests consisted of very big numbers and arrays of size at least 30000. Please write an 
+//efficient algorithm to prevent timeout.
+
+var x = [6, 9, 21];
+
+var fun = function(arr) {
+	
+	var max = Math.max(...arr);
+	var secound = arr[0];
+	var check = 0;
+
+	// to check the stop condition for recursion
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] === max) {
+			check++;
+		} 
+	}
+
+	// stop condition
+	if (check === arr.length - 1) {
+		return arr;
+	}
+
+	// to choose the secound largest number
+	for (var i = 0; i < arr.length; i++) {
+		if (secound < arr[i] && arr[i] !== max) {
+			secound = arr[i];
+		}
+	}
+
+	// to check the index of max and replace it
+	index = arr.indexOf(max);
+	arr.splice(index, 1, max - secound);
+
+	return fun(arr);
+}
+
+console.log( fun(x) );
