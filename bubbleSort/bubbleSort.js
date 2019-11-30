@@ -32,7 +32,24 @@
 
 // Feel free to add helper functions if needed.
 
+var arr = [2, 1, 3];
 
+// the time complexity of this function is O(n);
 var bubbleSort = function(array) {
-  // Your code here.
+	// loop in the array
+	for (var i = 0; i < array.length; i++) {
+		// compare the element with the next element
+		if (array[i] > array[i+1]) {
+			// save the bigger and the smaller element in varibles
+			var bigger = array[i];
+			var smaller = array[i+1];
+
+			// swap the elements
+			array.splice(i, 1, smaller);
+			array.splice(i+1, 1, bigger);
+		}
+	}
+  return array;
 };
+
+console.log( bubbleSort(arr) );
