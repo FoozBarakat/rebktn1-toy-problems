@@ -1,4 +1,4 @@
-// Coding decimal numbers with factorials is a way of writing out numbers in a base system that depends on factorials, rather than powers of numbers.
+	// Coding decimal numbers with factorials is a way of writing out numbers in a base system that depends on factorials, rather than powers of numbers.
 
 // In this system, the last digit is always 0 and is in base 0!.
 // The digit before that is either 0 or 1 and is in base 1!. The digit before that is either 0, 1, or 2 and is in base 2!.
@@ -22,58 +22,37 @@
 
 // Given numbers will be positive.
 
-var dec2FactString = function(nb) {
-	var str = "" + nb;
-	var len = str.length - 1;
-	var result = '';
-	for (var i = 0; i < str.length; i++) {
-		result += "" + str[i] + "*" + "" + len + "!" + "+";
-		--len;
-	}
-	//console.log(result);
-	return result.slice(0, result.length-1);
+function div(number) {
+   var str = '';
+   var i = 1;
+   while (number > 0) {
+       str = number % i + str;
+       number = Math.floor(number / i);
+       i++;
+   } 
+   return str;
 }
 
-console.log( dec2FactString(341010) );
+console.log( div(463) )
 
-var factString2Dec = function(str) {
-	var arrFac = [];
-	var arrMul = [];
-	var count = 0;
-	for (var i = 0; i < str.length; i++) {
-		if (str[i] === "!") {
-			var hold = factorial( str[i-1] );
-			arrFac.push(hold);
-		}
-	}
-	console.log(arrFac);
+function ret(string) {
+    var len = string.length - 1;
+    var result = 0;
 
-	for (var i = 0; i < str.length; i++) {
-		if (str[i] === '*') {
-			var hold = str[i-1] * arrFac[count];
-			count++;
-			arrMul.push(hold);
-		}
-	}
-	console.log( arrMul );
-
-	var sum = 0;
-
-	for (var i = 0; i < arrMul.length; i++) {
-		sum += arrMul[i];
-	}
-
-	return sum;
+    for (var i = len, j = 0; i > 0, j < string.length; i--, j++) {
+        result += string[j] * fac(i)
+    }
+    return result;
 }
 
+console.log( ret('341010') );
 
-console.log( factString2Dec( dec2FactString(341010) ) );
-
-
-var factorial = function(num) {
-	var result = 1;
-	for (var i = 1; i <= num; i++) {
-		result *= i;
-	}
-	return result;
+function fac(num) {
+    var result = 1;
+    for(var i = 1; i <= num; i++) {
+        result *= i;
+    }
+    return result;
 }
+
+console.log( fac(4) )

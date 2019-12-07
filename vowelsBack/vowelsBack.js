@@ -70,4 +70,4 @@ var ascciNumber = function() {
 	return letter;
 }
 
-//console.log( ascciNumber() );
+console.log( ascciNumber() );
