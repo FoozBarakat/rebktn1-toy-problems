@@ -35,7 +35,9 @@ var Tree = function(value) {
   this.children = [];
 };
 
-Tree.prototype.DFSelect = function(filter) {
+Tree.prototype.DFSelect = function(callback) {
+  var result = this.children.filter(callback);
+  return result;
 };
 
 
