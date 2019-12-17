@@ -32,9 +32,36 @@
  */
 
 'use strict';
-
-var compose = function() {
+// here i think i should solve this using es6 and Rest parameters, i figure that out afetr 
+// solving the pipe, but there is no time :)
+var compose = function(fun1, fun2) {
+    var value = fun1();
+    return (val) => {
+        value = value.replace(undefined, '');
+        return value + fun2(val)} ;
 };
 
-var pipe = function() {
+var greet = function(name){ return 'hi: ' + name;}
+var exclaim = function(statement) { return statement.toUpperCase() + '!';}
+var welcome = compose(greet, exclaim);
+console.log( welcome('phillip') );
+
+//..........................................
+
+// using es6 and Rest parameters
+var pipe = (...fun) => {
+    // returning a function that have the val as parameter
+    return (val) => {
+        // looping throw every parameter and change the value of val depinding on the function
+        fun.forEach(f => {
+            val = f(val);
+        });
+        // return the final val
+        return val;
+    }
 };
+
+var add2 = function(number){ return number + 2; }
+var multiplyBy3 = function(number){ return number * 3; }
+console.log( pipe(add2, multiplyBy3)(5) );
+console.log( pipe(add2, multiplyBy3, multiplyBy3)(5) );
