@@ -35,10 +35,22 @@ var Tree = function(value) {
   this.children = [];
 };
 
+// here we should use recursion and for loop so we can move down and right on the tree 
+Tree.prototype.BFSelect = function(filter, result, depth) {
+  var result = result || [];
+  var depth = depth || 0; // i couldn't figure out what is the initail value for depth, and what's the purpose of it exatully
+  
+  //apply the filter function on the value
+  //push the new value after filter, in the result array
+  result.push( filter(this.value, depth) );
+  
+  
+  for (var i = 0; i < this.children.length; i++) {
+    // here use recursion and there is no need for stop condition because it is inside loop
+    // here apply BFSelect on the children[i], but again i have problem with whats the value of depth sould be
+  }
 
-
-Tree.prototype.BFSelect = function(filter) {
-  // return an array of values for which the function filter(value, depth) returns true
+  return result;
 };
 
 /**
