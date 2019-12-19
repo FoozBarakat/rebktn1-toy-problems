@@ -38,18 +38,63 @@
  * evenNumbers.includes(2) should be true, evenNumbers.includes(3) should be false
  */
 
-
 var Range = function(start, end, step) {
+  // check if end is undefined
+  if (!end) { end = start};
+
+  // check if we sould go forward or backword
+  if (step) { 
+    if ( start < end) { step = 1 }
+    else { step = -1 }
+  } else {
+    step = 1;
+  }
+
+  this.start = start;
+  this.end = end;
+  this.step = step;
 };
 
 Range.prototype.size = function () {
+  // if the size = 1 => end === start
+  if (this.end === this.start) { return 1;}
+
+  // i think i should used math.floor, but i didn't need it in my tests
+  var len = (this.end - this.start) / this.step + 1;
+  return len;
 };
 
 Range.prototype.each = function (callback) {
+  // here there is if condation missing to check if the start > end or start < end, so we can get backword
+    for (var i = this.start; i <= this.end; i += this.step) {
+      callback(i);
+    }
 };
 
 Range.prototype.includes = function (val) {
+  // time is finished :(
 };
 
 var range = new Range(1);
+var myRange = new Range(10,0);
+var evenNumbers = new Range(2,8,2);
+
+range.each(function(val) {
+    console.log(val+"!");
+});
+console.log( range.size() );
+
+//
+
+myRange.each(function(val) {
+    console.log(val+"!");
+});
+console.log( myRange.size() );
+
+//
+
+evenNumbers.each(function(val){
+   console.log(val+"!");
+});
+console.log( evenNumbers.size() );
 
