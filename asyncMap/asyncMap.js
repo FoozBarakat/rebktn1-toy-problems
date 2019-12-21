@@ -37,6 +37,37 @@
  *
  */
 
+// this is a hard one 
 
-var asyncMap = function(tasks, callback) {
+var asyncMap = (tasks, callback) => {
+  var result = [];
+
+   tasks.forEach( (task, i) => {
+     var cb = (i) => {
+       var fun = (x) => {
+           resul.push(x);
+       }
+
+     }
+     //result.push(task)  
+  });
+
+  return callback( result );
 };
+
+
+asyncMap([
+    function(cb){
+      setTimeout(function(){
+        cb('one');
+      }, 200);
+    },
+    function(cb){
+      setTimeout(function(){
+        cb('two');
+      }, 100);
+    }
+   ],
+    function(results){
+      console.log(results); // ['one', 'two']
+   });
