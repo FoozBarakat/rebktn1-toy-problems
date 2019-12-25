@@ -18,7 +18,37 @@
 *
 */
 
-var rockPaperScissors = function (
-) {
-  // TODO: your solution here
+var rockPaperScissors = (number, arr, count) => {
+  var obj = { '0': 'R',
+              '1': 'P',
+              '2': 'S'
+            };
+
+  var str = '';
+  var arr = arr || [];
+  var count = count || 0;
+
+  for (var i = 0; i < number; i++) {
+    var key = random();
+    str += obj[key];
+  }
+  
+  if (count === number) {
+    return arr;
+  }
+
+  arr.push(str);
+  count++;
+  
+  return rockPaperScissors(number, arr, count);
+  
 };
+
+var random = () => {
+  return Math.floor( Math.random() * 3); 
+}
+
+console.log( rockPaperScissors(5) );
+console.log( rockPaperScissors(1) );
+console.log( rockPaperScissors(0) );
+console.log( rockPaperScissors(2) );
