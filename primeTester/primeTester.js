@@ -9,4 +9,20 @@ primeTester(1) // false
 
 */
 
-function primeTester(n) {}
+function primeTester(n) {
+  // if number = 1 => return false
+  if (n === 1) return false;
+  // loop starting from 2 until reach the number 
+  for (var i = 2; i < n; i++) {
+    // if number moduled by i = 0 => then the number is not prime => return false
+    if (n % i === 0) return false;
+  }
+  // number is prime => return true 
+  return true;
+}
+
+console.log(primeTester(2), "true");
+console.log(primeTester(1), "false");
+console.log(primeTester(7), "true");
+console.log(primeTester(8), "false");
+console.log(primeTester(13), "true");
