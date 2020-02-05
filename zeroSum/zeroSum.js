@@ -6,6 +6,7 @@ Constraints: Solve this linear time complexity O(n)
 
 zeroSum([ 1, 3, 2, -3 ]) // true
 zeroSum([ 5, 7, 2, 9 ]) // false
+<<<<<<< HEAD
 */
 
 // linear 
@@ -57,3 +58,6 @@ var zeroSum = (array, count) => {
   
   //console.log( zeroSum([ 1, 3, 2, -3 ]) ); // true
   //console.log( zeroSum([ 5, 7, 2, 9 ]) ); // false
+=======
+*/
+>>>>>>> 6ea89ad06c07a7995a7f734ca88922cc0b6bf387

@@ -12,4 +12,6 @@ longestRun("abcdefgh") // [ 0, 0 ]
 longestRun("abccccccc") // [ 2, 8 ]
 */
 
-function longestRun(string) {}
+
+
+
