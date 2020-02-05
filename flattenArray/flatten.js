@@ -22,5 +22,6 @@ function flatten(arr, result) {
   return result;
 };
 
+
 console.log(flatten([[1, 1], [4], 3, [3], 4, [6, 7]]), 'result: [1, 1, 4, 3, 3, 4, 6, 7]');
 
