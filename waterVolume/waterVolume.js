@@ -6,7 +6,7 @@ Explanation: An input of [3,0,3] can be visualized as such:
  __    __
 |  |//|  |
 |  |//|  |
-|  |//|  |
+|  |//|  |     
 ‾‾‾‾‾‾‾‾‾‾
 The area of water in the above picture (and the result of calling volume([3,0,3])) is 3.
 
@@ -19,5 +19,23 @@ volume([1,2,3,2,1]) // 0
 */
 
 function volume(heights) {
-  // your code here...
-}
+
+  if (heights.includes(0)) {
+    var index = heights.indexOf(0);
+    var before = heights[index - 1];
+    var after = heights[index + 1];
+
+    if (index !== 0 && index !== heights.length - 1) {
+      if (before < after) return before;
+      else return after;
+    }
+  };
+
+  return 0;
+};
+
+console.log(volume([3, 0, 3]), 'result: 3');
+console.log(volume([1, 2, 3, 4, 0, 5, 3, 1]), 'result: 4');
+console.log(volume([1, 2, 3, 2, 1]), 'result: 0');
+console.log(volume([0, 2, 3, 2, 1]), 'result: 0');
+console.log(volume([1, 2, 3, 2, 0]), 'result: 0');
