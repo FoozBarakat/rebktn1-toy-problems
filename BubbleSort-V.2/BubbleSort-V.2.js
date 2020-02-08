@@ -17,6 +17,31 @@
 
 
 function bubbleSort(input) {
-    // Write your code here, and
-    // return your final answer.
-}
+    var arr = [];
+
+    for (let i = 0; i < input.length; i++) {
+        if (input[i] > input[i + 1]) {
+            var hold = input[i];
+            input[i] = input[i + 1];
+            input[i + 1] = hold;
+        }
+    };
+
+    for (let j = 0; j < input.length - 1; j++) {
+        if (input[j] <= input[j + 1]) {
+            arr.push(true);
+        } else {
+            arr.push(false);
+        }
+    }
+
+    if (arr.includes(false)) {
+        bubbleSort(input);
+    }
+
+    return input;
+};
+
+console.log(bubbleSort([20, -10, -10, 2, 4, 0, 299, 1, 500, -1]), "result: [ -10, -10, -1, 0, 1, 2, 4, 20, 299, 500 ]");
+
+
