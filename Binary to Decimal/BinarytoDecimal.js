@@ -15,6 +15,29 @@
 
 
 
-function binaryToDecimal (n) {
-// code gose here 
+function binaryToDecimal(n) {
+  let base = 0;
+  let result = 0;
+  if (typeof n !== 'string') {
+    return new TypeError("input must be a binary string");
+  }
+  if (!(/^[0-1]+$/.test(n))) {
+    return new TypeError("input is invalid, must be binary string");
+  }
+  for (let i = n.length - 1; i >= 0; i--) {
+    if (n[i] == 1) {
+      result += Math.pow(2, base);
+    }
+    base++;
+  }
+  return result;
 }
+
+console.log(binaryToDecimal('0'), 0);
+console.log(binaryToDecimal('1'), 1);
+console.log(binaryToDecimal('10'), 2);
+console.log(binaryToDecimal('100'), 4);
+console.log(binaryToDecimal('101'), 5);
+console.log(binaryToDecimal('110'), 6);
+console.log(binaryToDecimal('111'), 7);
+console.log(binaryToDecimal('1000'), 8);
